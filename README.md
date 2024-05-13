@@ -38,6 +38,7 @@ git submodule set-url public https://github.com/pauliusuk/pauliusuk.github.io.gi
 
 ## Just pull files from remote repo
 | Command | Description |
+| :--  | :-- |
 | git fetch origin  | # Fetch the latest changes from the remote repository |
 | git reset --hard origin/master  | choose origin or master |
 
