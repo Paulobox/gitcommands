@@ -36,6 +36,10 @@ git submodule set-url public https://github.com/pauliusuk/pauliusuk.github.io.gi
 | `git remote set-url origin https://github.com/Paulobox/gitcommands.git`| set https remote link |
 |  `git remote set-url origin git@github.com:Paulobox/gitcommands.git` | set ssh remote link |
 
+## Just pull files from remote repo
+| Command | Description |
+| git fetch origin  | # Fetch the latest changes from the remote repository |
+| git reset --hard origin/master  | choose origin or master |
 
 ## Git Rebase
 | Command | Description |
