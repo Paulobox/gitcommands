@@ -68,6 +68,21 @@ git submodule set-url public https://github.com/pauliusuk/pauliusuk.github.io.gi
 
 <br><br>
 
+# Here's example of adding ssh key and pushing to github:
+
+
+```
+git config --global user.name "user1"
+git config --global user.email "user1@users.noreply.github.com"
+git init
+git add .
+git commit -m "first push"
+git remote set-url origin git@github.com:user1/gitcommands.git
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/user1
+git push origin main
+```
+
 ## Generating SSH key
 1. Check for Existing SSH Keys
 Open your terminal and check if SSH keys already exist:
@@ -123,9 +138,10 @@ Click Add SSH Key.
 6. Test Your Connection
 Verify the setup by running:
 ```
-ssh -T [email protected]
+ssh -T git@github.com
 ```
-If successful, you'll see a message like: "Hi username! You've successfully authenticated."
+If successful, you'll see a message like: "Hi username! You've successfully authenticated, but GitHub does not provide shell access.
+"
 
 <br><br>
 
@@ -143,6 +159,10 @@ To use `eval` with `ssh-agent` in Linux, you can follow these steps:
    Replace `/path/to/your/private/key` with the actual path to your SSH private key file.
 3. Enter the passphrase for your SSH private key when prompted.
 By running the `eval $(ssh-agent)` command, you start the `ssh-agent` and set up the necessary environment variables. Then, by using `ssh-add`, you add your SSH private key to the agent, allowing you to use it for authentication without having to enter the passphrase each time.
+
+
+
+<br>
 
 # WINDOWS🪟 SSH
 ```ps1
