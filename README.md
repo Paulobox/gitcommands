@@ -66,8 +66,6 @@ git submodule set-url public https://github.com/pauliusuk/pauliusuk.github.io.gi
 | `m, merge [-C <commit> \| -c <commit>] <label> [# <oneline>]` | Create a merge commit using the original merge commit's message (or the oneline, if no original merge commit was specified); use -c <commit> to reword the commit message |
 | `u, update-ref <ref>` | Track a placeholder for the <ref> to be updated to this position in the new commits. The <ref> is updated at the end of the rebase |
 
-
-
 <br><br>
 
 ## Generating SSH key
@@ -128,6 +126,9 @@ Verify the setup by running:
 ssh -T [email protected]
 ```
 If successful, you'll see a message like: "Hi username! You've successfully authenticated."
+
+<br><br>
+
 
 ## Linux🐧 add SSH Agent
 To use `eval` with `ssh-agent` in Linux, you can follow these steps:
