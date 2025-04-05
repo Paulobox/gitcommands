@@ -68,9 +68,68 @@ git submodule set-url public https://github.com/pauliusuk/pauliusuk.github.io.gi
 
 
 
-<br>
+<br><br>
 
-## add SSH Agent
+## Generating SSH key
+1. Check for Existing SSH Keys
+Open your terminal and check if SSH keys already exist:
+
+```
+ls -al ~/.ssh
+```
+if none exist create .ssh in home directory "mkdir ~/.ssh"
+
+```
+mkdir ~/.ssh
+cd ~/.ssh
+```
+Look for files like id_rsa and id_rsa.pub. If they exist, you can use them instead of creating a new key.
+
+2. Generate a New SSH Key
+Use the following command to create a new key pair (replace your_email@example.com with your GitHub email):
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+Press Enter to save the key in the default location (~/.ssh/id_rsa). You can also specify a custom name.
+
+Optionally, set a passphrase for added security.
+
+3. Add the Key to the SSH Agent
+Start the SSH agent:
+
+```
+eval "$(ssh-agent -s)"
+```
+
+Add your private key to the agent:
+```
+ssh-add ~/.ssh/id_rsa
+```
+4. Copy the Public Key
+Copy the contents of your public key (id_rsa.pub) to your clipboard:
+
+```
+cat ~/.ssh/id_rsa.pub
+```
+5. Add the Key to Your GitHub Account
+Log in to GitHub.
+
+Navigate to Github Settings > SSH and GPG Keys.
+
+Click New SSH Key.
+
+Paste your public key into the "Key" field and give it a descriptive title.
+
+Click Add SSH Key.
+
+6. Test Your Connection
+Verify the setup by running:
+```
+ssh -T [email protected]
+```
+If successful, you'll see a message like: "Hi username! You've successfully authenticated."
+
+## Linux🐧 add SSH Agent
 To use `eval` with `ssh-agent` in Linux, you can follow these steps:
 1. Start the `ssh-agent` by running the following command in the terminal:
    ```
@@ -84,7 +143,7 @@ To use `eval` with `ssh-agent` in Linux, you can follow these steps:
 3. Enter the passphrase for your SSH private key when prompted.
 By running the `eval $(ssh-agent)` command, you start the `ssh-agent` and set up the necessary environment variables. Then, by using `ssh-add`, you add your SSH private key to the agent, allowing you to use it for authentication without having to enter the passphrase each time.
 
-# WINDOWS SSH
+# WINDOWS🪟 SSH
 ```ps1
 $env:GIT_SSH_COMMAND = "ssh -i 'C:\Users\yourusername\.ssh\yourPrivateSSH_KEY'"
 git push -u origin main -f -v
