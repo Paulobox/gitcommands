@@ -165,9 +165,9 @@ By running the `eval $(ssh-agent)` command, you start the `ssh-agent` and set up
 <br>
 
 # WINDOWS🪟 SSH
+
 ```ps1
 $env:GIT_SSH_COMMAND = "ssh -i 'C:\Users\yourusername\.ssh\yourPrivateSSH_KEY'"
-git push -u origin main -f -v
 ```
 
 - make sure open ssh is not disabled in winows services.<br>
@@ -198,3 +198,8 @@ remove ssh identities
 ```
 ssh-add -D
 ```
+
+---
+
+push to repository forcefully
+git push -u origin main -f -v
