@@ -166,35 +166,34 @@ By running the `eval $(ssh-agent)` command, you start the `ssh-agent` and set up
 
 # WINDOWS🪟 SSH
 
-```ps1
+# 1. Set SSH key for Git
+```
 $env:GIT_SSH_COMMAND = "ssh -i 'C:\Users\yourusername\.ssh\yourPrivateSSH_KEY'"
 ```
 
-- make sure open ssh is not disabled in winows services.<br>
-
-check if ssh-agent is running
+# 2. Check and start ssh-agent service (run as Administrator)
 ```
 Get-Service ssh-agent
+Set-Service -Name ssh-agent -StartupType Automatic
+Start-Service ssh-agent
 ```
 
-Adding SSH-KEY make sure you have uploaded .pub key to github SSH keys
+# 3. Add your SSH key to ssh-agent
 ```
-ssh-add path/to/your/key
-```
-
-- Troubleshooting:
-
-test ssh connection
-```
-ssh -T git@github.com
+ssh-add C:\Users\yourusername\.ssh\yourPrivateSSH_KEY
 ```
 
-check added list of ssh keys
+# 4. Verify keys loaded
 ```
 ssh-add -l
 ```
 
-remove ssh identities
+# 5. Test SSH connection with GitHub
+```
+ssh -T git@github.com
+```
+
+# (Optional) Remove all SSH keys
 ```
 ssh-add -D
 ```
